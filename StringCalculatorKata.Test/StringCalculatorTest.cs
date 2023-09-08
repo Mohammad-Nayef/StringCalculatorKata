@@ -10,8 +10,13 @@ namespace StringCalculatorKata.Test
         [InlineData("1,1", 2)]
         public void AddingUpToTwoNumbers(string numbers, int actualSum)
         {
-            var sum = StringCalculator.Add(numbers);
+            // Arrange
+            int sum;
 
+            // Act
+            sum = StringCalculator.Add(numbers);
+
+            // Assert
             sum.Should().Be(actualSum);
         }
     }
