@@ -52,7 +52,7 @@ namespace StringCalculatorKata.Test
         [InlineData("1, -1, -2")]
         public void AddingNegativesThrowsNegativesNotAllowedException(string numbers)
         {
-            Assert.Throws<NegativesNotAllowed>(() => StringCalculator.Add(numbers));
+            Assert.Throws<NegativesNotAllowedException>(() => StringCalculator.Add(numbers));
         }
 
         [Theory]
