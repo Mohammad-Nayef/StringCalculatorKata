@@ -19,7 +19,7 @@
 
             if (HasNegatives(intNumbers))
             {
-                throw new NegativesNotAllowed(GetNegatives(intNumbers));
+                throw new NegativesNotAllowedException(GetNegatives(intNumbers));
             }
 
             return SumOfIntegers(intNumbers);

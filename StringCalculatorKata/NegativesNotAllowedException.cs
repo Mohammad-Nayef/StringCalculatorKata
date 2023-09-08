@@ -1,8 +1,8 @@
 ﻿namespace StringCalculatorKata
 {
-    public class NegativesNotAllowed : Exception
+    public class NegativesNotAllowedException : Exception
     {
-        public NegativesNotAllowed(int[] negatives) : base(GetErrorMessage(negatives)) { }
+        public NegativesNotAllowedException(int[] negatives) : base(GetErrorMessage(negatives)) { }
 
         private static string GetErrorMessage(int[] negatives)
         {
