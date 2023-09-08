@@ -32,6 +32,14 @@ namespace StringCalculatorKata.Test
             AssertHelper(numbers: onesString, actualSum: randomNumberOfOnes);
         }
 
+        [Theory]
+        [InlineData("1\n1\n1", 3)]
+        [InlineData("1\n1,1", 3)]
+        public void AddingNumbersWithNewLinesInsteadOfCommas(string numbers, int actualSum)
+        {
+            AssertHelper(numbers, actualSum);
+        }
+
         private void AssertHelper(string numbers, int actualSum)
         {
             // Act
