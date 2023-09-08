@@ -2,15 +2,17 @@
 {
     public class NegativesNotAllowed : Exception
     {
-        public NegativesNotAllowed(int[] negatives)
+        public NegativesNotAllowed(int[] negatives) : base(GetErrorMessage(negatives)) { }
+
+        private static string GetErrorMessage(int[] negatives)
         {
             var errorMessage = "negatives not allowed: ";
             AppendNegativesToErrorMessage(ref errorMessage, negatives);
 
-            throw new Exception(errorMessage);
+            return errorMessage;
         }
 
-        private void AppendNegativesToErrorMessage(ref string errorMessage, int[] negatives)
+        private static void AppendNegativesToErrorMessage(ref string errorMessage, int[] negatives)
         {
             foreach (var negative in negatives)
             {
