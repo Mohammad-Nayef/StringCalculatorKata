@@ -64,19 +64,8 @@
 
             foreach (var number in numbers)
             {
-                sum += number;
-            }
-
-            return sum;
-        }
-
-        private static int[] GetIntegers(string[] numbers)
-        {
-            int[] intNumbers = new int[numbers.Length];
-            
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                int.TryParse(numbers[i], out intNumbers[i]);
+                if (number <= 1000)
+                    sum += number;
             }
 
             return intNumbers;
