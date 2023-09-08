@@ -47,6 +47,14 @@ namespace StringCalculatorKata.Test
             AssertHelper(numbers, actualSum);
         }
 
+        [Theory]
+        [InlineData("-1")]
+        [InlineData("1, -1, -2")]
+        public void AddingNegativesThrowsNegativesNotAllowedException(string numbers)
+        {
+            Assert.Throws<NegativesNotAllowed>(() => StringCalculator.Add(numbers));
+        }
+
         private void AssertHelper(string numbers, int actualSum)
         {
             // Act
