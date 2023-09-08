@@ -11,14 +11,7 @@ namespace StringCalculatorKata.Test
         [InlineData("1,1", 2)]
         public void AddingUpToTwoNumbers(string numbers, int actualSum)
         {
-            // Arrange
-            int sum;
-
-            // Act
-            sum = StringCalculator.Add(numbers);
-
-            // Assert
-            sum.Should().Be(actualSum);
+            AssertHelper(numbers, actualSum);
         }
 
         [Fact]
@@ -28,7 +21,6 @@ namespace StringCalculatorKata.Test
             var fixture = new Fixture();
             var randomNumberOfOnes = fixture.Create<int>();
             var onesString = string.Empty;
-            int sum;
 
             // Act 
             for (var i = 0; i < randomNumberOfOnes; i++)
@@ -36,10 +28,17 @@ namespace StringCalculatorKata.Test
                 onesString = string.Concat(onesString, "1,");
             }
 
-            sum = StringCalculator.Add(onesString);
+            // Assert
+            AssertHelper(numbers: onesString, actualSum: randomNumberOfOnes);
+        }
+
+        private void AssertHelper(string numbers, int actualSum)
+        {
+            // Act
+            var sum = StringCalculator.Add(numbers);
 
             // Assert
-            sum.Should().Be(randomNumberOfOnes);
+            sum.Should().Be(actualSum);
         }
     }
 }
