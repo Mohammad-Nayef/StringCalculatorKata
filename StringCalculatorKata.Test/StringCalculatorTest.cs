@@ -40,6 +40,13 @@ namespace StringCalculatorKata.Test
             AssertHelper(numbers, actualSum);
         }
 
+        [Theory]
+        [InlineData("//;\n1;1,1", 3)]
+        public void AddingNumbersWithCustomDelimiters(string numbers, int actualSum)
+        {
+            AssertHelper(numbers, actualSum);
+        }
+
         private void AssertHelper(string numbers, int actualSum)
         {
             // Act
