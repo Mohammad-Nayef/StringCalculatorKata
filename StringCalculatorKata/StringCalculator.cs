@@ -25,6 +25,18 @@
             return SumOfIntegers(intNumbers);
         }
 
+        private static int[] GetIntegers(string[] values)
+        {
+            int[] intNumbers = new int[values.Length];
+
+            for (int i = 0; i < intNumbers.Length; i++)
+            {
+                int.TryParse(values[i], out intNumbers[i]);
+            }
+
+            return intNumbers;
+        }
+
         private static bool HasNegatives(int[] intNumbers)
         {
             foreach (var number in intNumbers)
@@ -68,7 +80,7 @@
                     sum += number;
             }
 
-            return intNumbers;
+            return sum;
         }
     }
 }
