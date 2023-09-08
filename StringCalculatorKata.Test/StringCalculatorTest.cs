@@ -55,6 +55,14 @@ namespace StringCalculatorKata.Test
             Assert.Throws<NegativesNotAllowed>(() => StringCalculator.Add(numbers));
         }
 
+        [Theory]
+        [InlineData("1001", 0)]
+        [InlineData("1001, 1", 1)]
+        public void NumbersBiggerThanThousandAreIgnored(string numbers, int actualSum)
+        {
+            AssertHelper(numbers, actualSum);
+        }
+
         private void AssertHelper(string numbers, int actualSum)
         {
             // Act
