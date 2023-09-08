@@ -75,10 +75,9 @@
             var sum = 0;
 
             foreach (var number in numbers)
-                {
+            {
                 if (number <= 1000)
                     sum += number;
-                }
             }
 
             return sum;
