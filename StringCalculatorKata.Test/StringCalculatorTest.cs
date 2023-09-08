@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using AutoFixture;
 
 namespace StringCalculatorKata.Test
 {
@@ -18,6 +19,27 @@ namespace StringCalculatorKata.Test
 
             // Assert
             sum.Should().Be(actualSum);
+        }
+
+        [Fact]
+        public void AddingUnknownAmountOfNumbers()
+        {
+            // Arrange
+            var fixture = new Fixture();
+            var randomNumberOfOnes = fixture.Create<int>();
+            var onesString = string.Empty;
+            int sum;
+
+            // Act 
+            for (var i = 0; i < randomNumberOfOnes; i++)
+            {
+                onesString = string.Concat(onesString, "1,");
+            }
+
+            sum = StringCalculator.Add(onesString);
+
+            // Assert
+            sum.Should().Be(randomNumberOfOnes);
         }
     }
 }
