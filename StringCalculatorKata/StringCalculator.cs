@@ -4,7 +4,13 @@
     {
         public static int Add(string numbers)
         {
-            var values = numbers.Split(',');
+            var values = numbers.Split(',', '\n');
+
+            return SumOfIntegers(values);
+        }
+
+        private static int SumOfIntegers(string[] values)
+        {
             var sum = 0;
 
             foreach (var value in values)
