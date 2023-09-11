@@ -4,7 +4,7 @@
     {
         public static int Add(string numbers)
         {
-            string[] values;
+            var values = new List<string>();
 
             if (numbers.StartsWith("//"))
             {
@@ -12,7 +12,8 @@
             }
             else
             {
-                values = numbers.Split(',', '\n');
+                values = numbers.Split(',', '\n')
+                                .ToList();
             }
 
             var intNumbers = GetIntegers(values);
@@ -25,19 +26,21 @@
             return SumOfIntegers(intNumbers);
         }
 
-        private static int[] GetIntegers(string[] values)
+        private static List<int> GetIntegers(List<string> values)
         {
-            int[] intNumbers = new int[values.Length];
+            var intNumbers = new List<int>();
+            int tempInteger;
 
-            for (int i = 0; i < intNumbers.Length; i++)
+            for (int i = 0; i < values.Count; i++)
             {
-                int.TryParse(values[i], out intNumbers[i]);
+                int.TryParse(values[i], out tempInteger);
+                intNumbers.Add(tempInteger);
             }
 
             return intNumbers;
         }
 
-        private static bool HasNegatives(int[] intNumbers)
+        private static bool HasNegatives(List<int> intNumbers)
         {
             foreach (var number in intNumbers)
             {
@@ -48,7 +51,7 @@
             return false;
         }
 
-        private static int[] GetNegatives(int[] intNumbers)
+        private static List<int> GetNegatives(List<int> intNumbers)
         {
             var listOfNegatives = new List<int>();
 
@@ -58,19 +61,20 @@
                     listOfNegatives.Add(number);
             }
 
-            return listOfNegatives.ToArray();
+            return listOfNegatives;
         }
 
-        private static string[] GetValuesWithCustomDelimiter(string numbers)
+        private static List<string> GetValuesWithCustomDelimiter(string numbers)
         {
             var numbersWithoutSlashes = numbers.Substring(2);
             var delimiter = numbersWithoutSlashes.First();
-            var values = numbersWithoutSlashes.Split(',', '\n', delimiter);
+            var values = numbersWithoutSlashes.Split(',', '\n', delimiter)
+                                              .ToList();
 
             return values;
         }
 
-        private static int SumOfIntegers(int[] numbers)
+        private static int SumOfIntegers(List<int> numbers)
         {
             var sum = 0;
 
