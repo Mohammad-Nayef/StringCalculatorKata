@@ -14,22 +14,12 @@ namespace StringCalculatorKata.Test
             AssertHelper(numbers, actualSum);
         }
 
-        [Fact]
-        public void Add_ShouldReturnTheSumOfNumbers_WhenAddingUnknownAmountOfNumbers()
+        [Theory]
+        [InlineData("1,1,1,1,1,1", 6)]
+
+        public void Add_ShouldReturnTheSumOfNumbers_WhenAddingMoreThanTwoNumbers(string numbers, int actualSum)
         {
-            // Arrange
-            var fixture = new Fixture();
-            var randomNumberOfOnes = fixture.Create<int>();
-            var onesString = string.Empty;
-
-            // Act 
-            for (var i = 0; i < randomNumberOfOnes; i++)
-            {
-                onesString = string.Concat(onesString, "1,");
-            }
-
-            // Assert
-            AssertHelper(numbers: onesString, actualSum: randomNumberOfOnes);
+            AssertHelper(numbers, actualSum);
         }
 
         [Theory]
