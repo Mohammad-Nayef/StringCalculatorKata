@@ -9,13 +9,13 @@ namespace StringCalculatorKata.Test
         [InlineData("", 0)]
         [InlineData("1", 1)]
         [InlineData("1,1", 2)]
-        public void AddingUpToTwoNumbers(string numbers, int actualSum)
+        public void Add_ShouldReturnTheSumOfNumbers_WhenAddingUpToTwoNumbers(string numbers, int actualSum)
         {
             AssertHelper(numbers, actualSum);
         }
 
         [Fact]
-        public void AddingUnknownAmountOfNumbers()
+        public void Add_ShouldReturnTheSumOfNumbers_WhenAddingUnknownAmountOfNumbers()
         {
             // Arrange
             var fixture = new Fixture();
@@ -35,14 +35,14 @@ namespace StringCalculatorKata.Test
         [Theory]
         [InlineData("1\n1\n1", 3)]
         [InlineData("1\n1,1", 3)]
-        public void AddingNumbersWithNewLinesInsteadOfCommas(string numbers, int actualSum)
+        public void Add_ShouldReturnTheSumOfNumbers_WhenAddingNumbersSeparatedWithNewLines(string numbers, int actualSum)
         {
             AssertHelper(numbers, actualSum);
         }
 
         [Theory]
         [InlineData("//;\n1;1,1", 3)]
-        public void AddingNumbersWithCustomDelimiters(string numbers, int actualSum)
+        public void Add_ShouldReturnTheSumOfNumbers_WhenAddingNumbersSeparatedWithCustomDelimiters(string numbers, int actualSum)
         {
             AssertHelper(numbers, actualSum);
         }
@@ -50,7 +50,7 @@ namespace StringCalculatorKata.Test
         [Theory]
         [InlineData("-1")]
         [InlineData("1, -1, -2")]
-        public void AddingNegativesThrowsNegativesNotAllowedException(string numbers)
+        public void Add_ShouldThrowNegativesNotAllowedException_WhenAddingNegativeNumbers(string numbers)
         {
             Assert.Throws<NegativesNotAllowedException>(() => StringCalculator.Add(numbers));
         }
@@ -58,7 +58,7 @@ namespace StringCalculatorKata.Test
         [Theory]
         [InlineData("1001", 0)]
         [InlineData("1001, 1", 1)]
-        public void NumbersBiggerThanThousandAreIgnored(string numbers, int actualSum)
+        public void Add_ShouldIgnoreNumbers_WhenTheyAreBiggerThanOneThousand(string numbers, int actualSum)
         {
             AssertHelper(numbers, actualSum);
         }
