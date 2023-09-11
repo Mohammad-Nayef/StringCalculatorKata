@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using AutoFixture;
 
 namespace StringCalculatorKata.Test
 {
