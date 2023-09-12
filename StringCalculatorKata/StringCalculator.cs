@@ -16,7 +16,7 @@
                                 .ToList();
             }
 
-            var intNumbers = GetIntegers(values);
+            var intNumbers = ParseIntoIntegers(values);
 
             if (HasNegatives(intNumbers))
             {
@@ -26,42 +26,26 @@
             return SumOfIntegers(intNumbers);
         }
 
-        private static List<int> GetIntegers(List<string> values)
+        private static List<int> ParseIntoIntegers(List<string> values)
         {
-            var intNumbers = new List<int>();
-            int tempInteger;
-
-            for (int i = 0; i < values.Count; i++)
-            {
-                int.TryParse(values[i], out tempInteger);
-                intNumbers.Add(tempInteger);
-            }
-
-            return intNumbers;
+            return values.Select(value => GetIntegerValue(value))
+                         .ToList();
         }
 
-        private static bool HasNegatives(List<int> intNumbers)
+        private static int GetIntegerValue(string value)
         {
-            foreach (var number in intNumbers)
-            {
-                if (number < 0)
-                    return true;
-            }
+            if (int.TryParse(value, out var number))
+                return number;
 
-            return false;
+            return 0;
         }
+
+        private static bool HasNegatives(List<int> intNumbers) => intNumbers.Any(number => number < 0);
 
         private static List<int> GetNegatives(List<int> intNumbers)
         {
-            var listOfNegatives = new List<int>();
-
-            foreach (var number in intNumbers)
-            {
-                if (number < 0)
-                    listOfNegatives.Add(number);
-            }
-
-            return listOfNegatives;
+            return intNumbers.Where(number => number < 0)
+                             .ToList();
         }
 
         private static List<string> GetValuesWithCustomDelimiter(string numbers)
@@ -76,15 +60,8 @@
 
         private static int SumOfIntegers(List<int> numbers)
         {
-            var sum = 0;
-
-            foreach (var number in numbers)
-            {
-                if (number <= 1000)
-                    sum += number;
-            }
-
-            return sum;
+            return numbers.Where(number => number <= 1000)
+                          .Sum();
         }
     }
 }
