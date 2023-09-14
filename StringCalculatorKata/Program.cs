@@ -1,0 +1,1 @@
+﻿Console.WriteLine("The console app is useless for this task so here's dummy Main() :)");
